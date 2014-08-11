@@ -75,7 +75,10 @@ module.exports = class Console
 
     #---------------------------------------------------------------------------
     _generic: (level, messageParts) ->
-        message = messageParts[0].toString()
+        if (messageParts[0] is `undefined`) or (messageParts[0].toString is `undefined`)
+            message = "" + messageParts[0]
+        else
+            message = messageParts[0].toString()
         parameters = []
 
         for messagePart in messageParts
